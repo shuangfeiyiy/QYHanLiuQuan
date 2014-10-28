@@ -9,5 +9,6 @@
 #ifndef QYHanLiuQuan_QYConstDefine_h
 #define QYHanLiuQuan_QYConstDefine_h
 
-
+static NSString  * const kPNNotificationNameLogin = @"LoginNotification";
+static NSString  * const kPNNotificationNameLogoff = @"LogoffNotification";
 #endif
