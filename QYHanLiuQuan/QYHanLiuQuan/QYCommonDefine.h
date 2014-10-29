@@ -9,5 +9,9 @@
 #ifndef QYHanLiuQuan_QYCommonDefine_h
 #define QYHanLiuQuan_QYCommonDefine_h
 
+#define   NSUD              [NSUserDefaults standardUserDefaults]
+#define   QYNSDC            [NSNotificationCenter defaultCenter]
+
+#define   appDelegate    ((QYAppDelegate*)([UIApplication sharedApplication].delegate))
 
 #endif

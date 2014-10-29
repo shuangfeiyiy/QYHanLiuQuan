@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "QYConstDefine.h"
+#import "QYCommonDefine.h"
+#import "QYViewControllerManager.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +18,22 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [self initLaunchStatus];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+//    如果是首次登录，则弹出用户指引界面
+    if ([NSUD boolForKey:kFirstLaunch]) {
+        [QYViewControllerManager presentQYController:QYViewControllerTypeUserGuide];
+    }else //如果不是首次登录，根据产品有咨讯功能的特点，则直接进入咨讯界面
+    {
+       
+        [QYViewControllerManager presentQYController:QYViewControllerTypeMainTabBar];
+       
+    }
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -40,6 +57,18 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)initLaunchStatus
+{
+    if (![NSUD boolForKey:kEverLaunched]) {
+        [NSUD setBool:YES forKey:kEverLaunched];
+        [NSUD setBool:YES forKey:kFirstLaunch];
+    }
+    else{
+        [NSUD setBool:NO forKey:kFirstLaunch];
+    }
+    [NSUD synchronize];
 }
 
 @end

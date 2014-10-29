@@ -14,14 +14,23 @@
 
 @implementation QYBBSViewController
 
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        UIImage *bbsImage = [UIImage imageNamed:@"主导航-论坛-press"];
+        UITabBarItem *bbsItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"主导航-论坛"] selectedImage:[bbsImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        self.tabBarItem = bbsItem;
+        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(10, 0, -10, 0)];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,22 +7,60 @@
 //
 
 #import "QYNewsViewController.h"
+#import "UIButton+ImageWithLabel.h"
 
 @interface QYNewsViewController ()
 
 @end
 
 @implementation QYNewsViewController
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        UIImage *toolImage = [UIImage imageNamed:@"主导航-资讯-press"];
+        UITabBarItem *newsItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"主导航-资讯"] selectedImage:[toolImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        self.tabBarItem = newsItem;
+        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(10, 0, -10, 0)];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //    导航栏左边按纽
+    UIButton *btnFilter = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    btnFilter.titleLabel.font = [UIFont systemFontOfSize:20.0f];
+    [btnFilter setImage:[UIImage imageNamed:@"筛选箭头"] withTitle:@"综合" forState:UIControlStateNormal];
+    [btnFilter setImage:[UIImage imageNamed:@"筛选箭头up"] withTitle:@"综合" forState:UIControlStateHighlighted];
+    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]initWithCustomView:btnFilter];
+    self.navigationItem.leftBarButtonItem = leftBarItem;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //    导航栏的Title
+    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 40)];
+    titleLable.font = [UIFont boldSystemFontOfSize:20.0f];
+    titleLable.text = @"韩流圈";
+    titleLable.textColor = [UIColor whiteColor];
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLable;
+    
+    //    导航栏右边按纽
+    UIButton *rightBtn =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [rightBtn addTarget:self action:@selector(onRightBarItem:) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn setImage:[UIImage imageNamed:@"搜索"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightItem =[[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    rightBtn.tintColor=[UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = rightItem;
+
 }
+
+
+- (void)onRightBarItem:(UIBarButtonItem*)sender
+{
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

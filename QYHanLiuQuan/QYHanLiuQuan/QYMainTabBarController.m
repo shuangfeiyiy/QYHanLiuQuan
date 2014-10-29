@@ -7,6 +7,10 @@
 //
 
 #import "QYMainTabBarController.h"
+#import "QYNavigationController.h"
+#import "QYNewsViewController.h"
+#import "QYBBSViewController.h"
+#import "QYPersonalViewController.h"
 
 @interface QYMainTabBarController ()
 
@@ -14,9 +18,33 @@
 
 @implementation QYMainTabBarController
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+//        [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar_background"]];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+//    咨询界面
+    QYNewsViewController *newsViewController = [[QYNewsViewController alloc] initWithStyle:UITableViewStylePlain];
+//    BBS界面
+    QYBBSViewController *bbsViewController = [[QYBBSViewController alloc] initWithStyle:UITableViewStylePlain];
+//    个人信息界面
+    QYPersonalViewController *personalViewController = [[QYPersonalViewController alloc] initWithStyle:UITableViewStylePlain];
+//    由于对于UITabBarController，每一个主界面需要继续导航， 所以放到数组里后续创建导航控制器
+    NSArray *viewControllers = @[newsViewController,bbsViewController,personalViewController];
+    
+    NSMutableArray *viewNavControlles = [[NSMutableArray alloc] initWithCapacity:3];
+    for (UIViewController *vctrlItem in viewControllers) {
+        QYNavigationController  *nav = [[QYNavigationController alloc] initWithRootViewController:vctrlItem];
+        [viewNavControlles addObject:nav];
+    }
+    self.viewControllers = viewNavControlles;
+
 }
 
 - (void)didReceiveMemoryWarning {
