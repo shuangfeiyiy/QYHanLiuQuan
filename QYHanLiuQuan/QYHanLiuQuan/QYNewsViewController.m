@@ -11,6 +11,8 @@
 #import "AFNetworking.h"
 #import "QYCommonDefine.h"
 #import "QYNewTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "QYConstDefine.h"
 
 static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
 
@@ -67,6 +69,7 @@ static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
     // 焦点图界面实现
     UIView *foucsImgBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 170)];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
+    imageView.tag = 1000;
     UILabel *tittleLable = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(imageView.frame), 310, 20)];
     [foucsImgBackgroundView addSubview:imageView];
     [foucsImgBackgroundView addSubview:tittleLable];
@@ -101,6 +104,8 @@ static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
               if ([[responseObject objectForKey:@"success"] doubleValue]) {
                   NSLog(@"result :%@",operation.responseString);
                   self.newsList = [responseObject objectForKey:@"data"];
+                  UIImageView *imgView = (UIImageView*)[self.tableView.tableHeaderView viewWithTag:1000];
+                  [imgView setImageWithURL:self.newsList[0][kImageUrl]];
                   [self.tableView reloadData];
               }
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -134,6 +139,8 @@ static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
 {
     return 104;
 }
+
+
 /*
 #pragma mark - Table view delegate
 
