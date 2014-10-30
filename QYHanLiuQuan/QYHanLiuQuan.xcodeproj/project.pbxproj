@@ -375,6 +375,8 @@
 		CCFBD26919FF892200E96661 /* new_features_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD26419FF892200E96661 /* new_features_5.jpg */; };
 		CCFBD26D19FF90D100E96661 /* QYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD26C19FF90D100E96661 /* QYNavigationController.m */; };
 		CCFBD27019FF9CDB00E96661 /* UIButton+ImageWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD26F19FF9CDB00E96661 /* UIButton+ImageWithLabel.m */; };
+		CCFBD2741A00C89800E96661 /* QYNewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2721A00C89800E96661 /* QYNewTableViewCell.m */; };
+		CCFBD2751A00C89800E96661 /* QYNewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD2731A00C89800E96661 /* QYNewTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -815,6 +817,9 @@
 		CCFBD26C19FF90D100E96661 /* QYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNavigationController.m; sourceTree = "<group>"; };
 		CCFBD26E19FF9CDB00E96661 /* UIButton+ImageWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageWithLabel.h"; sourceTree = "<group>"; };
 		CCFBD26F19FF9CDB00E96661 /* UIButton+ImageWithLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageWithLabel.m"; sourceTree = "<group>"; };
+		CCFBD2711A00C89800E96661 /* QYNewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNewTableViewCell.h; sourceTree = "<group>"; };
+		CCFBD2721A00C89800E96661 /* QYNewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNewTableViewCell.m; sourceTree = "<group>"; };
+		CCFBD2731A00C89800E96661 /* QYNewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYNewTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -973,6 +978,9 @@
 				CCD808EF19FF6FD900D5003C /* QYNewsViewController.h */,
 				CCD808F019FF6FD900D5003C /* QYNewsViewController.m */,
 				CCD808F119FF6FD900D5003C /* QYNewsViewController.xib */,
+				CCFBD2711A00C89800E96661 /* QYNewTableViewCell.h */,
+				CCFBD2721A00C89800E96661 /* QYNewTableViewCell.m */,
+				CCFBD2731A00C89800E96661 /* QYNewTableViewCell.xib */,
 			);
 			name = NewsViewControllers;
 			sourceTree = "<group>";
@@ -1744,6 +1752,7 @@
 				CCD80BCC19FF84C800D5003C /* 内页-评论-评论-press.png in Resources */,
 				CCD80B8819FF84C800D5003C /* 发表-返回-press.png in Resources */,
 				CCD80B2519FF84C800D5003C /* 粉丝列表-关注.png in Resources */,
+				CCFBD2751A00C89800E96661 /* QYNewTableViewCell.xib in Resources */,
 				CCD80B2B19FF84C800D5003C /* 设置-是否-否@2x.png in Resources */,
 				CCD80ACF19FF84C800D5003C /* new_feature_share_true.png in Resources */,
 				CCD8093F19FF75BD00D5003C /* emojiDelete.png in Resources */,
@@ -1942,6 +1951,7 @@
 			files = (
 				CCD808E819FF6F9500D5003C /* QYUserGuideViewController.m in Sources */,
 				CCFBD26D19FF90D100E96661 /* QYNavigationController.m in Sources */,
+				CCFBD2741A00C89800E96661 /* QYNewTableViewCell.m in Sources */,
 				CCD8091019FF75A900D5003C /* FMDatabasePool.m in Sources */,
 				CCD8094419FF75BD00D5003C /* QYEmojiPageView.m in Sources */,
 				CCD8091219FF75A900D5003C /* FMResultSet.m in Sources */,

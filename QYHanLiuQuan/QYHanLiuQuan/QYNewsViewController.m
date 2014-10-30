@@ -8,9 +8,15 @@
 
 #import "QYNewsViewController.h"
 #import "UIButton+ImageWithLabel.h"
+#import "AFNetworking.h"
+#import "QYCommonDefine.h"
+#import "QYNewTableViewCell.h"
+
+static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
 
 @interface QYNewsViewController ()
 
+@property (nonatomic, copy) NSArray *newsList;
 @end
 
 @implementation QYNewsViewController
@@ -28,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //    导航栏左边按纽
+    // 导航栏左边按纽
     UIButton *btnFilter = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     btnFilter.titleLabel.font = [UIFont systemFontOfSize:20.0f];
     [btnFilter setImage:[UIImage imageNamed:@"筛选箭头"] withTitle:@"综合" forState:UIControlStateNormal];
@@ -36,8 +42,7 @@
     UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc]initWithCustomView:btnFilter];
     self.navigationItem.leftBarButtonItem = leftBarItem;
     
-    
-    //    导航栏的Title
+    // 导航栏的Title
     UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 40)];
     titleLable.font = [UIFont boldSystemFontOfSize:20.0f];
     titleLable.text = @"韩流圈";
@@ -45,21 +50,65 @@
     titleLable.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = titleLable;
     
-    //    导航栏右边按纽
+    // 导航栏右边按纽
     UIButton *rightBtn =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
     [rightBtn addTarget:self action:@selector(onRightBarItem:) forControlEvents:UIControlEventTouchUpInside];
     [rightBtn setImage:[UIImage imageNamed:@"搜索"] forState:UIControlStateNormal];
     UIBarButtonItem *rightItem =[[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     rightBtn.tintColor=[UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = rightItem;
-
+    
+    // UITableView下拉刷新
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"松开立即刷新"];
+    [refreshControl addTarget:self action:@selector(onRefreshControl:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+    
+    // 焦点图界面实现
+    UIView *foucsImgBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 170)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
+    UILabel *tittleLable = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(imageView.frame), 310, 20)];
+    [foucsImgBackgroundView addSubview:imageView];
+    [foucsImgBackgroundView addSubview:tittleLable];
+    self.tableView.tableHeaderView = foucsImgBackgroundView;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"QYNewTableViewCell" bundle:nil] forCellReuseIdentifier:QYNewsCellIdentifier];
 }
 
+- (void)onRefreshControl:(UIRefreshControl*)refreshControl
+{
+    NSLog(@"%s",__func__);
+    [self requestNewsDataFromServer];
+}
 
 - (void)onRightBarItem:(UIBarButtonItem*)sender
 {
     
 }
+
+//通过网络从服务器上请求咨讯列表的数据
+-(void)requestNewsDataFromServer
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"theme": @"综合", @"max_id":@"39", @"refresh":@"0"};
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:HLQ_STR_URL_NEWS_LIST
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [self.refreshControl endRefreshing];
+              if ([[responseObject objectForKey:@"success"] doubleValue]) {
+                  NSLog(@"result :%@",operation.responseString);
+                  self.newsList = [responseObject objectForKey:@"data"];
+                  [self.tableView reloadData];
+              }
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [self.refreshControl endRefreshing];
+              
+          }];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -69,62 +118,22 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+
+    return self.newsList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    QYNewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QYNewsCellIdentifier forIndexPath:indexPath];
+    cell.cellData = self.newsList[indexPath.row];
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 104;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 /*
 #pragma mark - Table view delegate
 
@@ -132,7 +141,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    ; *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
     
     // Pass the selected object to the new view controller.
     
@@ -140,15 +149,4 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 */
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
