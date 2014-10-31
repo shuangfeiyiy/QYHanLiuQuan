@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.navigationBar.barTintColor = [UIColor colorWithRed:0.118 green:0.843 blue:0.450 alpha:1.000];
+
+    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+    labelTitle.font = [UIFont boldSystemFontOfSize:20];
+    labelTitle.textColor = [UIColor whiteColor];
+    labelTitle.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = labelTitle;
+
 }
 
 - (void)didReceiveMemoryWarning {

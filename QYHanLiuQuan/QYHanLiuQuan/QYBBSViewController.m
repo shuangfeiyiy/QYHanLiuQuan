@@ -28,11 +28,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *witeBBSItem =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onWriteBBSItem:)];
+    witeBBSItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = witeBBSItem;
     
-   
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.text = @"韩流圈";
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+    
+    //导航栏右btn
+    UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [rightBtn setBackgroundImage:[UIImage imageNamed:@"搜索"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(onSearchBarItem:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem  = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightItem;
 
 }
 
+- (void)onWriteBBSItem:(UIBarButtonItem*)barButtonItem
+{
+    
+}
+
+- (void)onSearchBarItem:(UIBarButtonItem*)searchBarButtonItem
+{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

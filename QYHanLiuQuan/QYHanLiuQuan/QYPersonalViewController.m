@@ -7,6 +7,7 @@
 //
 
 #import "QYPersonalViewController.h"
+#import "QYNavigationController.h"
 
 @interface QYPersonalViewController ()
 
@@ -28,6 +29,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *modifyPersonalInfoItem =  [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStyleDone target:self action:@selector(onModifyBarItem:)];
+    modifyPersonalInfoItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = modifyPersonalInfoItem;
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.text = @"个人信息";
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = titleLabel;
+    
+    //导航栏右btn
+    UIButton *btnSetting =[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [btnSetting setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
+    [btnSetting setImage:[UIImage imageNamed:@"设置-press"] forState:UIControlStateHighlighted];
+    [btnSetting addTarget:self action:@selector(onSettingBarBtnItem:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barBtnItem =[[UIBarButtonItem alloc]initWithCustomView:btnSetting];
+    self.navigationItem.rightBarButtonItem = barBtnItem;
+}
+
+
+- (void)onSettingBarBtnItem:(UIBarButtonItem*)barBtnItem
+{
+    
+}
+
+- (void)onModifyBarItem:(UIBarButtonItem*)barBtnItem
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
