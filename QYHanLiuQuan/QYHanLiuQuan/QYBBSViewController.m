@@ -7,9 +7,21 @@
 //
 
 #import "QYBBSViewController.h"
+#import "QYAutoScrollFocusView.h"
+#import "AFNetworking.h"
+#import "QYCommonDefine.h"
+#import "QYHotBBSTableViewCell.h"
+#import "QYNormalBBSTableViewCell.h"
 
-@interface QYBBSViewController ()
+static NSString *normalBBSCellIndentifier = @"QYNormalBBSTableViewCell";
+static NSString *hotBBSCellIndectifier = @"QYHotBBSTableViewCell";
 
+@interface QYBBSViewController ()<QYAutoScrollFocusViewDelegate>
+
+@property (nonatomic, strong) QYAutoScrollFocusView *autoScrollFocusView;
+
+@property (nonatomic, strong) NSArray *hotBBSContentList;
+@property (nonatomic, strong) NSArray *normalBBSContentList;
 @end
 
 @implementation QYBBSViewController
@@ -28,10 +40,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //导航栏左边按纽
     UIBarButtonItem *witeBBSItem =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onWriteBBSItem:)];
     witeBBSItem.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = witeBBSItem;
     
+    //导航栏title
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
     titleLabel.font = [UIFont boldSystemFontOfSize:20];
     titleLabel.text = @"韩流圈";
@@ -45,7 +59,55 @@
     [rightBtn addTarget:self action:@selector(onSearchBarItem:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem  = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
+    
+    // UITableView下拉刷新
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"松开立即刷新"];
+    [refreshControl addTarget:self action:@selector(onRefreshControl:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+    
+//    //实现焦点图
+//    NSMutableArray *imageArray  = [NSMutableArray arrayWithCapacity:5];
+//    for (int i = 1; i < 4; i++) {
+//        UIImage *focusImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i]];
+//        [imageArray addObject:focusImage];
+//    }
+//    self.autoScrollFocusView = [[QYAutoScrollFocusView alloc]initWithFrame:CGRectMake(0, 0, 320, 170) withImageArray:imageArray andStepTime:1.5];
+//    NSArray *focusTitleArr = @[@"#0你喜欢长腿欧巴嘛#",@"#1你喜欢长腿欧巴嘛#",@"#2你喜欢长腿欧巴嘛#",@"#3你喜欢长腿欧巴嘛#",@"#4你喜欢长腿欧巴嘛#"];
+//    self.autoScrollFocusView.focusTitleArr = focusTitleArr;
+//    self.autoScrollFocusView.delegate = self;
+//    [self.tableView.tableHeaderView addSubview:self.autoScrollFocusView];
 
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"QYNormalBBSTableViewCell" bundle:nil] forCellReuseIdentifier:normalBBSCellIndentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"QYHotBBSTableViewCell" bundle:nil] forCellReuseIdentifier:hotBBSCellIndectifier];
+}
+
+
+//根据与服务器制订的接口， 从服务器获取热门贴子的数据
+- (void)requestBBSContentFromServer
+{
+    AFHTTPRequestOperationManager *hotManager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *hotParameters = @{@"max_id":@"0", @"refresh":@"1", @"refresh_hot":@"1"};
+    hotManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    hotManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [hotManager POST:HLQ_STR_URL_BBS_LIST parameters:hotParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"****下拉刷新**** JSON: %@", responseObject);
+        if ([[responseObject objectForKey:@"success"] doubleValue]) {
+            self.normalBBSContentList = responseObject[@"data"];
+            //此处使用谓词，按日期先后过滤出最新的三条数据，做为最热门的数据
+            [self.refreshControl endRefreshing];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"****下拉刷新**** Error: %@", error);
+        [self.refreshControl endRefreshing];
+    }];
+
+}
+
+- (void)onRefreshControl:(UIRefreshControl*)refreshControl
+{
+    [self requestBBSContentFromServer];
 }
 
 - (void)onWriteBBSItem:(UIBarButtonItem*)barButtonItem
@@ -65,85 +127,39 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSInteger nSectionCount = 0;
+    if (section == 0) {
+        nSectionCount = self.hotBBSContentList.count;
+    }
+    else
+    {
+        nSectionCount = self.normalBBSContentList.count;
+    }
+    return nSectionCount;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    UITableViewCell *cell = nil;
     
+    switch (indexPath.section) {
+        case 0:
+            cell = [tableView dequeueReusableCellWithIdentifier:hotBBSCellIndectifier forIndexPath:indexPath];
+            ((QYHotBBSTableViewCell*)cell).cellData = self.hotBBSContentList[indexPath.row];
+            break;
+            case 1:
+            cell = [tableView dequeueReusableCellWithIdentifier:normalBBSCellIndentifier forIndexPath:indexPath];
+            ((QYNormalBBSTableViewCell*)cell).cellData = self.normalBBSContentList[indexPath.row];
+            break;
+        default:
+            break;
+    }
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

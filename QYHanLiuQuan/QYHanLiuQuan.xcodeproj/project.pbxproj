@@ -377,6 +377,12 @@
 		CCFBD27019FF9CDB00E96661 /* UIButton+ImageWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD26F19FF9CDB00E96661 /* UIButton+ImageWithLabel.m */; };
 		CCFBD2741A00C89800E96661 /* QYNewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2721A00C89800E96661 /* QYNewTableViewCell.m */; };
 		CCFBD2751A00C89800E96661 /* QYNewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD2731A00C89800E96661 /* QYNewTableViewCell.xib */; };
+		CCFBD2791A03392C00E96661 /* QYHotBBSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2771A03392C00E96661 /* QYHotBBSTableViewCell.m */; };
+		CCFBD27A1A03392C00E96661 /* QYHotBBSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD2781A03392C00E96661 /* QYHotBBSTableViewCell.xib */; };
+		CCFBD27E1A03394800E96661 /* QYNormalBBSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD27C1A03394800E96661 /* QYNormalBBSTableViewCell.m */; };
+		CCFBD27F1A03394800E96661 /* QYNormalBBSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD27D1A03394800E96661 /* QYNormalBBSTableViewCell.xib */; };
+		CCFBD2821A03514400E96661 /* QYAutoScrollFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2811A03514400E96661 /* QYAutoScrollFocusView.m */; };
+		CCFBD2861A03566500E96661 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2851A03566500E96661 /* UIViewExt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -820,6 +826,16 @@
 		CCFBD2711A00C89800E96661 /* QYNewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNewTableViewCell.h; sourceTree = "<group>"; };
 		CCFBD2721A00C89800E96661 /* QYNewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNewTableViewCell.m; sourceTree = "<group>"; };
 		CCFBD2731A00C89800E96661 /* QYNewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYNewTableViewCell.xib; sourceTree = "<group>"; };
+		CCFBD2761A03392C00E96661 /* QYHotBBSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYHotBBSTableViewCell.h; sourceTree = "<group>"; };
+		CCFBD2771A03392C00E96661 /* QYHotBBSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYHotBBSTableViewCell.m; sourceTree = "<group>"; };
+		CCFBD2781A03392C00E96661 /* QYHotBBSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYHotBBSTableViewCell.xib; sourceTree = "<group>"; };
+		CCFBD27B1A03394800E96661 /* QYNormalBBSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNormalBBSTableViewCell.h; sourceTree = "<group>"; };
+		CCFBD27C1A03394800E96661 /* QYNormalBBSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNormalBBSTableViewCell.m; sourceTree = "<group>"; };
+		CCFBD27D1A03394800E96661 /* QYNormalBBSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYNormalBBSTableViewCell.xib; sourceTree = "<group>"; };
+		CCFBD2801A03514400E96661 /* QYAutoScrollFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYAutoScrollFocusView.h; sourceTree = "<group>"; };
+		CCFBD2811A03514400E96661 /* QYAutoScrollFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYAutoScrollFocusView.m; sourceTree = "<group>"; };
+		CCFBD2841A03566500E96661 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		CCFBD2851A03566500E96661 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -881,6 +897,7 @@
 		CCD808AF19FF696B00D5003C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CCFBD2871A0357DB00E96661 /* testImage */,
 				CCD8099519FF84C800D5003C /* images */,
 				CCD808B019FF696B00D5003C /* Info.plist */,
 				CCD808B119FF696B00D5003C /* main.m */,
@@ -938,6 +955,7 @@
 		CCD808D819FF6BE200D5003C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CCFBD2831A0353B700E96661 /* QYCustomView */,
 				CCD8094C19FF762E00D5003C /* XMLDictionary */,
 				CCD8094519FF75E300D5003C /* SVProgressHUD */,
 				CCD8093019FF75BD00D5003C /* Emoji */,
@@ -958,6 +976,12 @@
 				CCD808F419FF6FFE00D5003C /* QYBBSViewController.h */,
 				CCD808F519FF6FFE00D5003C /* QYBBSViewController.m */,
 				CCD808F619FF6FFE00D5003C /* QYBBSViewController.xib */,
+				CCFBD2761A03392C00E96661 /* QYHotBBSTableViewCell.h */,
+				CCFBD2771A03392C00E96661 /* QYHotBBSTableViewCell.m */,
+				CCFBD2781A03392C00E96661 /* QYHotBBSTableViewCell.xib */,
+				CCFBD27B1A03394800E96661 /* QYNormalBBSTableViewCell.h */,
+				CCFBD27C1A03394800E96661 /* QYNormalBBSTableViewCell.m */,
+				CCFBD27D1A03394800E96661 /* QYNormalBBSTableViewCell.xib */,
 			);
 			name = BBSViewControllers;
 			sourceTree = "<group>";
@@ -1534,6 +1558,24 @@
 			name = CustomViewController;
 			sourceTree = "<group>";
 		};
+		CCFBD2831A0353B700E96661 /* QYCustomView */ = {
+			isa = PBXGroup;
+			children = (
+				CCFBD2841A03566500E96661 /* UIViewExt.h */,
+				CCFBD2851A03566500E96661 /* UIViewExt.m */,
+				CCFBD2801A03514400E96661 /* QYAutoScrollFocusView.h */,
+				CCFBD2811A03514400E96661 /* QYAutoScrollFocusView.m */,
+			);
+			name = QYCustomView;
+			sourceTree = "<group>";
+		};
+		CCFBD2871A0357DB00E96661 /* testImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = testImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1672,6 +1714,7 @@
 				CCD80BD319FF84C800D5003C /* 内页-返回-press@2x.png in Resources */,
 				CCD80B7D19FF84C800D5003C /* 发表-添加菜单键-press@2x.png in Resources */,
 				CCD80B6919FF84C800D5003C /* 内页-评论-评论@2x.png in Resources */,
+				CCFBD27F1A03394800E96661 /* QYNormalBBSTableViewCell.xib in Resources */,
 				CCD80AFA19FF84C800D5003C /* 对话框-语音-自己-样式1@2x.png in Resources */,
 				CCD80BB719FF84C800D5003C /* 内页-分享-朋友圈-press@2x.png in Resources */,
 				CCD80BA919FF84C800D5003C /* 内页-分享-QQ@2x.png in Resources */,
@@ -1921,6 +1964,7 @@
 				CCD80BF319FF84C800D5003C /* 筛选类别-时尚@2x.png in Resources */,
 				CCD80B9319FF84C800D5003C /* 第三方登陆-QQicon@2x.png in Resources */,
 				CCD80BE119FF84C800D5003C /* 搜索@2x.png in Resources */,
+				CCFBD27A1A03392C00E96661 /* QYHotBBSTableViewCell.xib in Resources */,
 				CCD80BC619FF84C800D5003C /* 内页-评论-press.png in Resources */,
 				CCD80B0419FF84C800D5003C /* 导航-收藏@2x.png in Resources */,
 				CCD80B0119FF84C800D5003C /* 导航-收藏-press.png in Resources */,
@@ -1953,6 +1997,7 @@
 				CCFBD26D19FF90D100E96661 /* QYNavigationController.m in Sources */,
 				CCFBD2741A00C89800E96661 /* QYNewTableViewCell.m in Sources */,
 				CCD8091019FF75A900D5003C /* FMDatabasePool.m in Sources */,
+				CCFBD2861A03566500E96661 /* UIViewExt.m in Sources */,
 				CCD8094419FF75BD00D5003C /* QYEmojiPageView.m in Sources */,
 				CCD8091219FF75A900D5003C /* FMResultSet.m in Sources */,
 				CCD808F719FF6FFE00D5003C /* QYBBSViewController.m in Sources */,
@@ -1978,9 +2023,11 @@
 				CCD8090E19FF75A900D5003C /* FMDatabase.m in Sources */,
 				CCD8092B19FF75B300D5003C /* AFSecurityPolicy.m in Sources */,
 				CCD808ED19FF6FAA00D5003C /* QYLoginViewController.m in Sources */,
+				CCFBD2821A03514400E96661 /* QYAutoScrollFocusView.m in Sources */,
 				CCD8090019FF705400D5003C /* QYViewControllerManager.m in Sources */,
 				CCD8094019FF75BD00D5003C /* EmojiEmoticons.m in Sources */,
 				CCD8094B19FF75E300D5003C /* SVProgressHUD.m in Sources */,
+				CCFBD2791A03392C00E96661 /* QYHotBBSTableViewCell.m in Sources */,
 				CCD8092D19FF75B300D5003C /* AFURLRequestSerialization.m in Sources */,
 				CCD8092A19FF75B300D5003C /* AFNetworkReachabilityManager.m in Sources */,
 				CCD808E419FF6F5E00D5003C /* QYMainTabBarController.m in Sources */,
@@ -1994,6 +2041,7 @@
 				CCD8094319FF75BD00D5003C /* EmojiTransport.m in Sources */,
 				CCD8092919FF75B300D5003C /* AFHTTPSessionManager.m in Sources */,
 				CCD8097F19FF77CD00D5003C /* NSData+GIF.m in Sources */,
+				CCFBD27E1A03394800E96661 /* QYNormalBBSTableViewCell.m in Sources */,
 				CCD808B219FF696B00D5003C /* main.m in Sources */,
 				CCD8098D19FF77CD00D5003C /* UIImage+MultiFormat.m in Sources */,
 				CCD8098F19FF77CD00D5003C /* UIImageView+WebCache.m in Sources */,
