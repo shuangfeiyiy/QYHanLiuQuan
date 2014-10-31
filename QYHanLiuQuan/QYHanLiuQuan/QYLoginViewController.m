@@ -7,8 +7,18 @@
 //
 
 #import "QYLoginViewController.h"
+#import "QYCommonDefine.h"
+#import "QYConstDefine.h"
 
 @interface QYLoginViewController ()
+
+@property (weak, nonatomic) IBOutlet UIView *inputBGV;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UITextField *accountNumField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIButton *microblogBtn;
+@property (nonatomic, retain) UISwipeGestureRecognizer *swipGesture;
 
 @end
 
@@ -16,8 +26,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBarHidden = YES;
+    
 }
+- (IBAction)onBackBtn:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [QYNSDC addObserver:self selector:@selector(onLoginSuc:) name:kQYNotificationNameLogin object:nil];
+    
+    [QYNSDC addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [QYNSDC addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [QYNSDC removeObserver:self name:kQYNotificationNameLogin object:nil];
+    [QYNSDC removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [QYNSDC removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+#pragma mark -
+#pragma mark UIKeyboard notification
+- (void)keyBoardWillShow:(NSNotification*)nofication
+{
+    //键盘弹出的时候， 在view上添加一个手势，当点击除键盘之外的任何区域，让键盘消失
+    self.swipGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onUserTappedViewWithKeybboarShow:)];
+    self.swipGesture.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:self.swipGesture];
+    
+    NSDictionary *userInfo = nofication.userInfo;
+    CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat timerInterval = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationOptions animationOptions = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+}
+
+- (void)onUserTappedViewWithKeybboarShow:(UISwipeGestureRecognizer*)gesture
+{
+    
+}
+
+- (void)keyBoardWillHide:(NSNotification*)nofication
+{
+    [self.view removeGestureRecognizer:self.swipGesture];
+    NSDictionary *userInfo = nofication.userInfo;
+    CGFloat timerInterval = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationOptions animationOptions = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    [UIView animateWithDuration:timerInterval
+                          delay: 0.0
+                        options: animationOptions
+                     animations:^{
+                         
+                     }
+                     completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

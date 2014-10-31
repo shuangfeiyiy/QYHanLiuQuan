@@ -16,7 +16,6 @@
 		CCD808E819FF6F9500D5003C /* QYUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD808E619FF6F9500D5003C /* QYUserGuideViewController.m */; };
 		CCD808E919FF6F9500D5003C /* QYUserGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD808E719FF6F9500D5003C /* QYUserGuideViewController.xib */; };
 		CCD808ED19FF6FAA00D5003C /* QYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD808EB19FF6FAA00D5003C /* QYLoginViewController.m */; };
-		CCD808EE19FF6FAA00D5003C /* QYLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD808EC19FF6FAA00D5003C /* QYLoginViewController.xib */; };
 		CCD808F219FF6FD900D5003C /* QYNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD808F019FF6FD900D5003C /* QYNewsViewController.m */; };
 		CCD808F319FF6FD900D5003C /* QYNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD808F119FF6FD900D5003C /* QYNewsViewController.xib */; };
 		CCD808F719FF6FFE00D5003C /* QYBBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD808F519FF6FFE00D5003C /* QYBBSViewController.m */; };
@@ -383,6 +382,7 @@
 		CCFBD27F1A03394800E96661 /* QYNormalBBSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD27D1A03394800E96661 /* QYNormalBBSTableViewCell.xib */; };
 		CCFBD2821A03514400E96661 /* QYAutoScrollFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2811A03514400E96661 /* QYAutoScrollFocusView.m */; };
 		CCFBD2861A03566500E96661 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2851A03566500E96661 /* UIViewExt.m */; };
+		CCFBD2891A03ECF800E96661 /* QYLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,7 +415,6 @@
 		CCD808E719FF6F9500D5003C /* QYUserGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYUserGuideViewController.xib; sourceTree = "<group>"; };
 		CCD808EA19FF6FAA00D5003C /* QYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYLoginViewController.h; sourceTree = "<group>"; };
 		CCD808EB19FF6FAA00D5003C /* QYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYLoginViewController.m; sourceTree = "<group>"; };
-		CCD808EC19FF6FAA00D5003C /* QYLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYLoginViewController.xib; sourceTree = "<group>"; };
 		CCD808EF19FF6FD900D5003C /* QYNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNewsViewController.h; sourceTree = "<group>"; };
 		CCD808F019FF6FD900D5003C /* QYNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNewsViewController.m; sourceTree = "<group>"; };
 		CCD808F119FF6FD900D5003C /* QYNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYNewsViewController.xib; sourceTree = "<group>"; };
@@ -836,6 +835,7 @@
 		CCFBD2811A03514400E96661 /* QYAutoScrollFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYAutoScrollFocusView.m; sourceTree = "<group>"; };
 		CCFBD2841A03566500E96661 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		CCFBD2851A03566500E96661 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYLoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1032,7 +1032,7 @@
 			children = (
 				CCD808EA19FF6FAA00D5003C /* QYLoginViewController.h */,
 				CCD808EB19FF6FAA00D5003C /* QYLoginViewController.m */,
-				CCD808EC19FF6FAA00D5003C /* QYLoginViewController.xib */,
+				CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */,
 			);
 			name = LoginViewController;
 			sourceTree = "<group>";
@@ -1700,6 +1700,7 @@
 				CCD80B6519FF84C800D5003C /* 内页-评论-点赞@2x.png in Resources */,
 				CCD80BEC19FF84C800D5003C /* 筛选类别-文化-press.png in Resources */,
 				CCD80B9E19FF84C800D5003C /* 返回-press.png in Resources */,
+				CCFBD2891A03ECF800E96661 /* QYLoginViewController.xib in Resources */,
 				CCD80B0A19FF84C800D5003C /* 搜索联系人@2x.png in Resources */,
 				CCD80B8519FF84C800D5003C /* 发表-缩略图-语音-press@2x.png in Resources */,
 				CCD80BCE19FF84C800D5003C /* 内页-评论-评论.png in Resources */,
@@ -1809,7 +1810,6 @@
 				CCD80B0D19FF84C800D5003C /* 私信列表-删除.png in Resources */,
 				CCD80B7E19FF84C800D5003C /* 发表-添加菜单键.png in Resources */,
 				CCD80B8119FF84C800D5003C /* 发表-缩略图-删除-press@2x.png in Resources */,
-				CCD808EE19FF6FAA00D5003C /* QYLoginViewController.xib in Resources */,
 				CCD80B9919FF84C800D5003C /* 第三方登陆title-han@2x.png in Resources */,
 				CCD80BA119FF84C800D5003C /* 返回@2x.png in Resources */,
 				CCD80BA319FF84C800D5003C /* search.png in Resources */,

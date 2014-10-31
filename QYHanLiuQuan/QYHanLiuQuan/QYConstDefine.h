@@ -21,6 +21,12 @@ static NSString * const kQYNotificationNameLogoff = @"LogoffNotification";
 static NSString * const kEverLaunched = @"EverLaunched";
 static NSString * const kFirstLaunch = @"FirstLaunch";
 
+
+/*
+ *在首选项里设置是否已经登录成功过的标志位
+ */
+static NSString * const kIsAuthorOK = @"isAuthorOK";
+
 /*
  * 咨询界面从服务器获取数据，对应的数据Key,此部份内容需要与服务器保持一致
  */

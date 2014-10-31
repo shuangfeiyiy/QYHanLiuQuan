@@ -8,6 +8,9 @@
 
 #import "QYPersonalViewController.h"
 #import "QYNavigationController.h"
+#import "QYLoginViewController.h"
+#import "QYCommonDefine.h"
+#import "QYConstDefine.h"
 
 @interface QYPersonalViewController ()
 
@@ -53,6 +56,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (![NSUD boolForKey:kIsAuthorOK]) {
+        QYLoginViewController *loginViewController = [[QYLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
+    }
     
 }
 - (void)onSettingBarBtnItem:(UIBarButtonItem*)barBtnItem
