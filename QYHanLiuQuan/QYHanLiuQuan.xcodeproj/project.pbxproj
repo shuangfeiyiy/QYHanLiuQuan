@@ -383,6 +383,7 @@
 		CCFBD2821A03514400E96661 /* QYAutoScrollFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2811A03514400E96661 /* QYAutoScrollFocusView.m */; };
 		CCFBD2861A03566500E96661 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2851A03566500E96661 /* UIViewExt.m */; };
 		CCFBD2891A03ECF800E96661 /* QYLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */; };
+		CCFBD28C1A05FC6F00E96661 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD28B1A05FC6F00E96661 /* RTLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -836,6 +837,8 @@
 		CCFBD2841A03566500E96661 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		CCFBD2851A03566500E96661 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYLoginViewController.xib; sourceTree = "<group>"; };
+		CCFBD28A1A05FC6F00E96661 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		CCFBD28B1A05FC6F00E96661 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -955,6 +958,8 @@
 		CCD808D819FF6BE200D5003C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CCFBD28A1A05FC6F00E96661 /* RTLabel.h */,
+				CCFBD28B1A05FC6F00E96661 /* RTLabel.m */,
 				CCFBD2831A0353B700E96661 /* QYCustomView */,
 				CCD8094C19FF762E00D5003C /* XMLDictionary */,
 				CCD8094519FF75E300D5003C /* SVProgressHUD */,
@@ -2033,6 +2038,7 @@
 				CCD808E419FF6F5E00D5003C /* QYMainTabBarController.m in Sources */,
 				CCD8097E19FF77CD00D5003C /* MKAnnotationView+WebCache.m in Sources */,
 				CCD8090F19FF75A900D5003C /* FMDatabaseAdditions.m in Sources */,
+				CCFBD28C1A05FC6F00E96661 /* RTLabel.m in Sources */,
 				CCD8094119FF75BD00D5003C /* EmojiMapSymbols.m in Sources */,
 				CCD808F219FF6FD900D5003C /* QYNewsViewController.m in Sources */,
 				CCD8092719FF75B300D5003C /* AFHTTPRequestOperation.m in Sources */,

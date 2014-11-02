@@ -95,6 +95,8 @@ static NSString *hotBBSCellIndectifier = @"QYHotBBSTableViewCell";
         NSLog(@"****下拉刷新**** JSON: %@", responseObject);
         if ([[responseObject objectForKey:@"success"] doubleValue]) {
             self.normalBBSContentList = responseObject[@"data"];
+            self.hotBBSContentList = [self.normalBBSContentList subarrayWithRange:NSMakeRange(0, 3)];
+            [self.tableView reloadData];
             //此处使用谓词，按日期先后过滤出最新的三条数据，做为最热门的数据
             [self.refreshControl endRefreshing];
         }
@@ -160,6 +162,22 @@ static NSString *hotBBSCellIndectifier = @"QYHotBBSTableViewCell";
             break;
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat retHeight = 0.0;
+    switch (indexPath.section) {
+        case 0:
+            retHeight = 107.0f;
+            break;
+            case 1:
+            retHeight = 44.0f;
+            break;
+        default:
+            break;
+    }
+    return retHeight;
 }
 
 @end

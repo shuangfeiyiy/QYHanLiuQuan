@@ -8,10 +8,20 @@
 
 #import "QYNormalBBSTableViewCell.h"
 
+@interface QYNormalBBSTableViewCell ()
+
+@end
+
+
 @implementation QYNormalBBSTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    UIButton *btnProfile = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnProfile.bounds = CGRectMake(0, 0, 20, 20);
+    [btnProfile setBackgroundImage: [UIImage imageNamed:@"帖子-列表-收藏"] forState:UIControlStateNormal];
+    [btnProfile setBackgroundImage:[UIImage imageNamed:@"帖子-列表-收藏-press"] forState:UIControlStateHighlighted];
+    self.accessoryView = btnProfile;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -23,7 +33,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
+    self.textLabel.text = self.cellData[@"titile"];
 }
 
 @end

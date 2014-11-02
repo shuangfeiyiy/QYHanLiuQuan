@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RTLabel.h"
 
 @interface QYHotBBSTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *avastarImageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *labelScreenName;
-@property (weak, nonatomic) IBOutlet UILabel *labelDatetime;
-@property (weak, nonatomic) IBOutlet UILabel *labelBBSContent;
-@property (weak, nonatomic) IBOutlet UILabel *labelFavoriteCount;
+@property (weak, nonatomic) IBOutlet RTLabel *labelScreenName;
+@property (weak, nonatomic) IBOutlet RTLabel *labelDatetime;
+@property (weak, nonatomic) IBOutlet RTLabel *labelBBSContent;
+@property (weak, nonatomic) IBOutlet RTLabel *labelFavoriteCount;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewFavorite;
 
