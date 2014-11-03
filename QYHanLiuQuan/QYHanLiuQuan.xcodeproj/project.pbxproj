@@ -384,6 +384,8 @@
 		CCFBD2861A03566500E96661 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2851A03566500E96661 /* UIViewExt.m */; };
 		CCFBD2891A03ECF800E96661 /* QYLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */; };
 		CCFBD28C1A05FC6F00E96661 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD28B1A05FC6F00E96661 /* RTLabel.m */; };
+		CCFBD2901A07603200E96661 /* QYNewsDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD28E1A07603200E96661 /* QYNewsDetailInfoViewController.m */; };
+		CCFBD2911A07603200E96661 /* QYNewsDetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD28F1A07603200E96661 /* QYNewsDetailInfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -839,6 +841,9 @@
 		CCFBD2881A03ECF800E96661 /* QYLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYLoginViewController.xib; sourceTree = "<group>"; };
 		CCFBD28A1A05FC6F00E96661 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		CCFBD28B1A05FC6F00E96661 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		CCFBD28D1A07603200E96661 /* QYNewsDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNewsDetailInfoViewController.h; sourceTree = "<group>"; };
+		CCFBD28E1A07603200E96661 /* QYNewsDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNewsDetailInfoViewController.m; sourceTree = "<group>"; };
+		CCFBD28F1A07603200E96661 /* QYNewsDetailInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYNewsDetailInfoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1010,6 +1015,9 @@
 				CCFBD2711A00C89800E96661 /* QYNewTableViewCell.h */,
 				CCFBD2721A00C89800E96661 /* QYNewTableViewCell.m */,
 				CCFBD2731A00C89800E96661 /* QYNewTableViewCell.xib */,
+				CCFBD28D1A07603200E96661 /* QYNewsDetailInfoViewController.h */,
+				CCFBD28E1A07603200E96661 /* QYNewsDetailInfoViewController.m */,
+				CCFBD28F1A07603200E96661 /* QYNewsDetailInfoViewController.xib */,
 			);
 			name = NewsViewControllers;
 			sourceTree = "<group>";
@@ -1916,6 +1924,7 @@
 				CCD80B6719FF84C800D5003C /* 内页-评论-评论-press@2x.png in Resources */,
 				CCD80AD119FF84C800D5003C /* 他人-导航-加好友-press.png in Resources */,
 				CCD80BB619FF84C800D5003C /* 内页-分享-朋友圈-press.png in Resources */,
+				CCFBD2911A07603200E96661 /* QYNewsDetailInfoViewController.xib in Resources */,
 				CCD80BAA19FF84C800D5003C /* 内页-分享-复制-press.png in Resources */,
 				CCD80BF019FF84C800D5003C /* 筛选类别-时尚-press.png in Resources */,
 				CCD80AE119FF84C800D5003C /* 对话框-他人-样式1.png in Resources */,
@@ -1999,6 +2008,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD808E819FF6F9500D5003C /* QYUserGuideViewController.m in Sources */,
+				CCFBD2901A07603200E96661 /* QYNewsDetailInfoViewController.m in Sources */,
 				CCFBD26D19FF90D100E96661 /* QYNavigationController.m in Sources */,
 				CCFBD2741A00C89800E96661 /* QYNewTableViewCell.m in Sources */,
 				CCD8091019FF75A900D5003C /* FMDatabasePool.m in Sources */,

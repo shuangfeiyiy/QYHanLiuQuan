@@ -66,17 +66,17 @@ static NSString *hotBBSCellIndectifier = @"QYHotBBSTableViewCell";
     [refreshControl addTarget:self action:@selector(onRefreshControl:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     
-//    //实现焦点图
-//    NSMutableArray *imageArray  = [NSMutableArray arrayWithCapacity:5];
-//    for (int i = 1; i < 4; i++) {
-//        UIImage *focusImage = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i]];
-//        [imageArray addObject:focusImage];
-//    }
-//    self.autoScrollFocusView = [[QYAutoScrollFocusView alloc]initWithFrame:CGRectMake(0, 0, 320, 170) withImageArray:imageArray andStepTime:1.5];
-//    NSArray *focusTitleArr = @[@"#0你喜欢长腿欧巴嘛#",@"#1你喜欢长腿欧巴嘛#",@"#2你喜欢长腿欧巴嘛#",@"#3你喜欢长腿欧巴嘛#",@"#4你喜欢长腿欧巴嘛#"];
-//    self.autoScrollFocusView.focusTitleArr = focusTitleArr;
-//    self.autoScrollFocusView.delegate = self;
-//    [self.tableView.tableHeaderView addSubview:self.autoScrollFocusView];
+    //实现焦点图
+    NSMutableArray *imageArray  = [NSMutableArray arrayWithCapacity:5];
+    for (int i = 1; i < 4; i++) {
+        UIImage *focusImage = [UIImage imageNamed:[NSString stringWithFormat:@"new_features_%d.jpg",i]];
+        [imageArray addObject:focusImage];
+    }
+    self.autoScrollFocusView = [[QYAutoScrollFocusView alloc]initWithFrame:CGRectMake(0, 0, 320, 170) withImageArray:imageArray andStepTime:1.5];
+    NSArray *focusTitleArr = @[@"#0你喜欢长腿欧巴嘛#",@"#1你喜欢长腿欧巴嘛#",@"#2你喜欢长腿欧巴嘛#",@"#3你喜欢长腿欧巴嘛#",@"#4你喜欢长腿欧巴嘛#"];
+    self.autoScrollFocusView.focusTitleArr = focusTitleArr;
+    self.autoScrollFocusView.delegate = self;
+    [self.tableView.tableHeaderView addSubview:self.autoScrollFocusView];
 
 
     [self.tableView registerNib:[UINib nibWithNibName:@"QYNormalBBSTableViewCell" bundle:nil] forCellReuseIdentifier:normalBBSCellIndentifier];
@@ -179,5 +179,4 @@ static NSString *hotBBSCellIndectifier = @"QYHotBBSTableViewCell";
     }
     return retHeight;
 }
-
 @end

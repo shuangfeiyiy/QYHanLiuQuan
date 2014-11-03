@@ -13,6 +13,8 @@
 #import "QYNewTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "QYConstDefine.h"
+#import "QYNewsDetailInfoViewController.h"
+
 
 static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
 
@@ -140,6 +142,12 @@ static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
     return 104;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    QYNewsDetailInfoViewController *detailInfoViewController = [[QYNewsDetailInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    detailInfoViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailInfoViewController animated:YES];
+}
 
 /*
 #pragma mark - Table view delegate

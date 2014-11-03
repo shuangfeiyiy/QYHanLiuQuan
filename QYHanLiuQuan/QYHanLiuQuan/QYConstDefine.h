@@ -55,4 +55,10 @@ static NSString * const kIsCollect = @"iscollect";
  * 个人数据与服务器对应的数据key，此部份内容需要与服务器数据保持一致
  */
 static NSString * const kUserID = @"user_id";
+
+/*
+ * 服务器返回标志位
+ */
+static NSString * const kHLQServerResponseSuccess = @"1";
+static NSString * const kHLQServerResponseFailure = @"0";
 #endif
