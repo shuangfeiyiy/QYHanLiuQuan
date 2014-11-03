@@ -10,4 +10,6 @@
 
 @interface QYNewsDetailInfoViewController : UITableViewController
 
+
+@property (strong, nonatomic) NSDictionary *newsDetailInfo;
 @end

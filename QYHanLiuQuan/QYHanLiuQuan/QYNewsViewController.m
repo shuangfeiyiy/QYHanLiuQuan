@@ -146,6 +146,7 @@ static NSString *QYNewsCellIdentifier = @"NewsCellIdentifier";
 {
     QYNewsDetailInfoViewController *detailInfoViewController = [[QYNewsDetailInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
     detailInfoViewController.hidesBottomBarWhenPushed = YES;
+    detailInfoViewController.newsDetailInfo = self.newsList[indexPath.row];
     [self.navigationController pushViewController:detailInfoViewController animated:YES];
 }
 

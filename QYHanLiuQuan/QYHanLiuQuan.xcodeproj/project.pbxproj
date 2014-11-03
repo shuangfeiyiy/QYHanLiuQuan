@@ -386,6 +386,7 @@
 		CCFBD28C1A05FC6F00E96661 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD28B1A05FC6F00E96661 /* RTLabel.m */; };
 		CCFBD2901A07603200E96661 /* QYNewsDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD28E1A07603200E96661 /* QYNewsDetailInfoViewController.m */; };
 		CCFBD2911A07603200E96661 /* QYNewsDetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD28F1A07603200E96661 /* QYNewsDetailInfoViewController.xib */; };
+		CCFBD2941A07978300E96661 /* NSString+FrameHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFBD2931A07978300E96661 /* NSString+FrameHeight.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -844,6 +845,8 @@
 		CCFBD28D1A07603200E96661 /* QYNewsDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNewsDetailInfoViewController.h; sourceTree = "<group>"; };
 		CCFBD28E1A07603200E96661 /* QYNewsDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNewsDetailInfoViewController.m; sourceTree = "<group>"; };
 		CCFBD28F1A07603200E96661 /* QYNewsDetailInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYNewsDetailInfoViewController.xib; sourceTree = "<group>"; };
+		CCFBD2921A07978300E96661 /* NSString+FrameHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FrameHeight.h"; sourceTree = "<group>"; };
+		CCFBD2931A07978300E96661 /* NSString+FrameHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FrameHeight.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -963,6 +966,8 @@
 		CCD808D819FF6BE200D5003C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CCFBD2921A07978300E96661 /* NSString+FrameHeight.h */,
+				CCFBD2931A07978300E96661 /* NSString+FrameHeight.m */,
 				CCFBD28A1A05FC6F00E96661 /* RTLabel.h */,
 				CCFBD28B1A05FC6F00E96661 /* RTLabel.m */,
 				CCFBD2831A0353B700E96661 /* QYCustomView */,
@@ -2028,6 +2033,7 @@
 				CCD808FC19FF701A00D5003C /* QYPersonalViewController.m in Sources */,
 				CCD8091119FF75A900D5003C /* FMDatabaseQueue.m in Sources */,
 				CCD8098119FF77CD00D5003C /* SDWebImageCompat.m in Sources */,
+				CCFBD2941A07978300E96661 /* NSString+FrameHeight.m in Sources */,
 				CCD8099319FF781F00D5003C /* QYPlaySound.m in Sources */,
 				CCD8098319FF77CD00D5003C /* SDWebImageDownloader.m in Sources */,
 				CCD8098419FF77CD00D5003C /* SDWebImageDownloaderOperation.m in Sources */,

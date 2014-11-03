@@ -7,8 +7,21 @@
 //
 
 #import "QYNewsDetailInfoViewController.h"
+#import "UIImageView+WebCache.h"
+#import "QYConstDefine.h"
+#import "NSString+FrameHeight.h"
+
+static NSString *kCellIndentifier = @"QYNewsDetailInfoViewCell";
 
 @interface QYNewsDetailInfoViewController ()
+//详细咨询信息界面，头部信息
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderBgView;
+@property (weak, nonatomic) IBOutlet UIImageView *tableHeaderImageView;
+@property (weak, nonatomic) IBOutlet UIPageControl *tableHeaderPageControl;
+@property (weak, nonatomic) IBOutlet UILabel *tableHeaderLabelTitle;
+@property (weak, nonatomic) IBOutlet UILabel *labelDateTime;
+@property (weak, nonatomic) IBOutlet UILabel *labelSource;
+@property (weak, nonatomic) IBOutlet UILabel *labelTheme;
 
 @property (nonatomic, strong) UIToolbar *toolBar;
 @end
@@ -18,11 +31,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    //详细咨询信息焦点图
+    [self.tableHeaderImageView setImageWithURL:[NSURL URLWithString:self.newsDetailInfo[kImageUrl]]];
     
+    //详细咨询信息标题
+    self.tableHeaderLabelTitle.text = self.newsDetailInfo[kTitle];
+    
+    //咨询信息、日期 只显示月份和日期
+    NSString *strDateTime = self.newsDetailInfo[kDate];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setCalendar:[NSCalendar currentCalendar]];
+    NSDate *dateFromString = [dateFormatter dateFromString:strDateTime];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSSecondCalendarUnit | NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:dateFromString];
+    self.labelDateTime.text = [NSString stringWithFormat:@"%ld.%ld",(long)components.month,(long)components.day];
+    
+    //咨询来源
+    NSString *strSource = [self.newsDetailInfo objectForKey:kAuthor];
+    self.labelSource.text = strSource;
+    
+    //所属主题
+    NSString *strTheme = self.newsDetailInfo[kTheme];
+    self.labelTheme.text = strTheme;
+    
+    //界面底部的UIToolBar
     self.toolBar = [[UIToolbar alloc] init];
-    self.toolBar.frame = CGRectMake(0, 568-44-20, 320, 44);
-    [self.view addSubview:self.toolBar];
+    self.toolBar.frame = CGRectMake(0, 568-44, 320, 44);
+    [[UIApplication sharedApplication].keyWindow addSubview:self.toolBar];
     [self createToolBarItems];
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIndentifier];
 
 }
 
@@ -58,6 +96,12 @@
     [self.toolBar setItems:@[btnItemBack,btnItemFlexibleSpace,btnItemCollection,btnItemFlexibleSpace,btnItemComment,btnItemFlexibleSpace,btnItemShare]];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.toolBar removeFromSuperview];
+}
+
 #pragma mark -
 #pragma mark 工具条上的UIBarButtonItem点击的时候的回调方法
 //工具条上返回按纽回调方法
@@ -91,86 +135,28 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIndentifier forIndexPath:indexPath];
+    cell.textLabel.text = self.newsDetailInfo[kContent];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.numberOfLines = 0;
+    cell.backgroundColor = [UIColor orangeColor];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    NSString *cellText = self.newsDetailInfo[kContent];
+    CGFloat heightOfCellText = [cellText frameHeightWithFontSize:14.0f forViewWidth:tableView.bounds.size.height];
+    return heightOfCellText;
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
