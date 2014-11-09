@@ -146,8 +146,6 @@ static NSString *kCellIndentifier = @"QYNewsDetailInfoViewCell";
     cell.textLabel.text = self.newsDetailInfo[kContent];
     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
     cell.textLabel.numberOfLines = 0;
-    cell.backgroundColor = [UIColor orangeColor];
-    
     return cell;
 }
 
@@ -155,7 +153,9 @@ static NSString *kCellIndentifier = @"QYNewsDetailInfoViewCell";
 {
     
     NSString *cellText = self.newsDetailInfo[kContent];
-    CGFloat heightOfCellText = [cellText frameHeightWithFontSize:14.0f forViewWidth:tableView.bounds.size.height];
+//    从服务器上取下来的文章内容带有换行和回车， 所以去掉\n\r之后再计算文本的高度，否则计算的值不准确
+    NSString *cellTextWithoutReturn = [cellText stringByReplacingOccurrencesOfString:@"\n\r" withString:@""];
+    CGFloat heightOfCellText = [cellTextWithoutReturn frameHeightWithFontSize:14.0f forViewWidth:tableView.bounds.size.height];
     return heightOfCellText;
 }
 
