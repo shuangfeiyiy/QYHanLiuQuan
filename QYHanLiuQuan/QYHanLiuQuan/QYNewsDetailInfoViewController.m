@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "QYConstDefine.h"
 #import "NSString+FrameHeight.h"
+#import "QYLoginViewController.h"
+#import "QYCommonDefine.h"
 
 static NSString *kCellIndentifier = @"QYNewsDetailInfoViewCell";
 
@@ -96,10 +98,16 @@ static NSString *kCellIndentifier = @"QYNewsDetailInfoViewCell";
     [self.toolBar setItems:@[btnItemBack,btnItemFlexibleSpace,btnItemCollection,btnItemFlexibleSpace,btnItemComment,btnItemFlexibleSpace,btnItemShare]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.toolBar.hidden = NO;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.toolBar removeFromSuperview];
+    self.toolBar.hidden = YES;
 }
 
 #pragma mark -
@@ -113,19 +121,31 @@ static NSString *kCellIndentifier = @"QYNewsDetailInfoViewCell";
 //工具条上收藏按纽回调方法
 - (void)onBarButtonCollection:(UIButton*)sender
 {
-    
+    if (![NSUD boolForKey:kIsAuthorOK]) {
+        QYLoginViewController *loginViewController = [[QYLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
+    }
 }
 
 //工具条上回复评论按纽的回调方法
 - (void)onBarButtonComment:(UIBarButtonItem*)sender
 {
+    if (![NSUD boolForKey:kIsAuthorOK]) {
+        QYLoginViewController *loginViewController = [[QYLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
+        return;
+    }
     
 }
 
 //工具条上分享按纽的回调方法
+//如果没有鉴权成功，则直接弹出弹录注册界面
 - (void)onBarButtonShare:(UIBarButtonItem*)sender
 {
-    
+    if (![NSUD boolForKey:kIsAuthorOK]) {
+        QYLoginViewController *loginViewController = [[QYLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginViewController animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

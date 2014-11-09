@@ -367,6 +367,8 @@
 		CCD80BFD19FF84C800D5003C /* 筛选类别-音乐-press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD80ACA19FF84C800D5003C /* 筛选类别-音乐-press@2x.png */; };
 		CCD80BFE19FF84C800D5003C /* 筛选类别-音乐.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD80ACB19FF84C800D5003C /* 筛选类别-音乐.png */; };
 		CCD80BFF19FF84C800D5003C /* 筛选类别-音乐@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD80ACC19FF84C800D5003C /* 筛选类别-音乐@2x.png */; };
+		CCF361511A0F77A4008E703D /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF3614E1A0F77A4008E703D /* libWeiboSDK.a */; };
+		CCF361521A0F77A4008E703D /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCF3614F1A0F77A4008E703D /* WeiboSDK.bundle */; };
 		CCFBD26519FF892200E96661 /* new_features_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD26019FF892200E96661 /* new_features_1.jpg */; };
 		CCFBD26619FF892200E96661 /* new_features_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD26119FF892200E96661 /* new_features_2.jpg */; };
 		CCFBD26719FF892200E96661 /* new_features_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCFBD26219FF892200E96661 /* new_features_3.jpg */; };
@@ -817,6 +819,9 @@
 		CCD80ACA19FF84C800D5003C /* 筛选类别-音乐-press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "筛选类别-音乐-press@2x.png"; sourceTree = "<group>"; };
 		CCD80ACB19FF84C800D5003C /* 筛选类别-音乐.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "筛选类别-音乐.png"; sourceTree = "<group>"; };
 		CCD80ACC19FF84C800D5003C /* 筛选类别-音乐@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "筛选类别-音乐@2x.png"; sourceTree = "<group>"; };
+		CCF3614E1A0F77A4008E703D /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		CCF3614F1A0F77A4008E703D /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		CCF361501A0F77A4008E703D /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		CCFBD26019FF892200E96661 /* new_features_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = new_features_1.jpg; sourceTree = "<group>"; };
 		CCFBD26119FF892200E96661 /* new_features_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = new_features_2.jpg; sourceTree = "<group>"; };
 		CCFBD26219FF892200E96661 /* new_features_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = new_features_3.jpg; sourceTree = "<group>"; };
@@ -855,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD8095519FF777500D5003C /* libsqlite3.dylib in Frameworks */,
+				CCF361511A0F77A4008E703D /* libWeiboSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +965,7 @@
 		CCD808D719FF6BD800D5003C /* OpenSource */ = {
 			isa = PBXGroup;
 			children = (
+				CCF3614D1A0F77A4008E703D /* libWeiboSDK */,
 			);
 			name = OpenSource;
 			sourceTree = "<group>";
@@ -1555,6 +1562,16 @@
 			path = "资讯";
 			sourceTree = "<group>";
 		};
+		CCF3614D1A0F77A4008E703D /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				CCF3614E1A0F77A4008E703D /* libWeiboSDK.a */,
+				CCF3614F1A0F77A4008E703D /* WeiboSDK.bundle */,
+				CCF361501A0F77A4008E703D /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
 		CCFBD25F19FF890800E96661 /* userGuide */ = {
 			isa = PBXGroup;
 			children = (
@@ -1825,6 +1842,7 @@
 				CCD80BDF19FF84C800D5003C /* 搜索-返回@2x.png in Resources */,
 				CCD80B3A19FF84C800D5003C /* 主导航-个人页@2x.png in Resources */,
 				CCD80B2819FF84C800D5003C /* 粉丝列表-相互@2x.png in Resources */,
+				CCF361521A0F77A4008E703D /* WeiboSDK.bundle in Resources */,
 				CCD80B0D19FF84C800D5003C /* 私信列表-删除.png in Resources */,
 				CCD80B7E19FF84C800D5003C /* 发表-添加菜单键.png in Resources */,
 				CCD80B8119FF84C800D5003C /* 发表-缩略图-删除-press@2x.png in Resources */,
@@ -2188,6 +2206,10 @@
 				INFOPLIST_FILE = QYHanLiuQuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/QYHanLiuQuan/libWeiboSDK",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2203,6 +2225,10 @@
 				INFOPLIST_FILE = QYHanLiuQuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/QYHanLiuQuan/libWeiboSDK",
+				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
