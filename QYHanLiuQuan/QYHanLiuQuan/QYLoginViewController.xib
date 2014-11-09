@@ -104,6 +104,9 @@
                     <state key="normal" image="第三方登陆-微博icon.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="onSinaSDKLoginButton:" destination="-1" eventType="touchUpInside" id="Ym3-Cc-bE7"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.14509804546833038" green="0.85490202903747559" blue="0.54117649793624878" alpha="1" colorSpace="deviceRGB"/>

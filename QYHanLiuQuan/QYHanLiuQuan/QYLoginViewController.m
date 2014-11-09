@@ -10,6 +10,7 @@
 #import "QYCommonDefine.h"
 #import "QYConstDefine.h"
 #import "AFNetworking.h"
+#import "WeiboSDK.h"
 
 @interface QYLoginViewController ()<UITextFieldDelegate>
 
@@ -213,6 +214,15 @@
     
 } 
 
+- (IBAction)onSinaSDKLoginButton:(UIButton *)sender {
+    
+    WBAuthorizeRequest *ruquest = [[WBAuthorizeRequest alloc] init];
+    ruquest.redirectURI = kAppRedirectURI;
+    ruquest.scope = @"all";
+    ruquest.userInfo = @{@"sso_from": @"loginViewController"};
+    [WeiboSDK sendRequest:ruquest];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,11 +9,17 @@
 #ifndef QYHanLiuQuan_QYCommonDefine_h
 #define QYHanLiuQuan_QYCommonDefine_h
 
-#define   NSUD              [NSUserDefaults standardUserDefaults]
-#define   QYNSDC            [NSNotificationCenter defaultCenter]
+#define   NSUD           [NSUserDefaults standardUserDefaults]
+#define   QYNSDC         [NSNotificationCenter defaultCenter]
 
 #define   appDelegate    ((QYAppDelegate*)([UIApplication sharedApplication].delegate))
 
+//第三方登录平台
+//新浪注册所需要信息的常量定义
+//如果需要测试此工程，需要修改此处的应用信息为自己的信息
+#define kAppKey @"1151675697"
+#define kAppSecret @"ba089ae1cab9fb771478b1b19ab815f2"
+#define kAppRedirectURI @"https://api.weibo.com/oauth2/default.html"
 
 //关于韩流圈从服务器上获取数据定义的URL
 #define  BASE_URL           @"http://1.hallyu.sinaapp.com"
