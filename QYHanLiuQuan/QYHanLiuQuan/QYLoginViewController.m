@@ -47,7 +47,9 @@
     [QYNSDC addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     //注册系统键盘将要隐藏的通知事件，事件响应方法是keyBoardWillHide：
     [QYNSDC addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-
+    if (self.isTabBarRootViewController) {
+        self.backBtn.hidden = YES;
+    }
 }
 
 

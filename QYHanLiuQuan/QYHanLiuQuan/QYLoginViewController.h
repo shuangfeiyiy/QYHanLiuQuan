@@ -10,4 +10,5 @@
 
 @interface QYLoginViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isTabBarRootViewController;
 @end

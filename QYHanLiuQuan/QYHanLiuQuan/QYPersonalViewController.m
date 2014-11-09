@@ -58,6 +58,7 @@
     [super viewWillAppear:animated];
     if (![NSUD boolForKey:kIsAuthorOK]) {
         QYLoginViewController *loginViewController = [[QYLoginViewController alloc] init];
+        loginViewController.isTabBarRootViewController = YES;
         [self.navigationController pushViewController:loginViewController animated:YES];
     }
     
